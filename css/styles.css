@@ -1,5 +1,48 @@
 .body{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.calcGrid{
+    display: grid;
+    grid-template-rows: 5% 30% 65%;
+    height: 750px;
+    width: 550px;
+    border: 15px solid black;
+    border-collapse: collapse;
+    border-radius: 20px;
+}
+.top{
+    border: thick solid black;
+    grid-row: 1;
+    border-collapse: collapse;
+}
+.screen{
+    border: thick solid black;
+    grid-row: 2;
+    border-collapse: collapse;
+}
+.buttonWrap{
+    border: thick solid black;
+    grid-row: 3;
+    display: grid;
+    grid-template-columns: repeat(4,25%);
+    grid-template-rows: repeat(6,16.67%);
+    border-collapse: collapse;
+}
+.buttons{
+    border: thin solid black;
+    border-collapse: collapse;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    transition: 0.5s ease-in-out;
+}
+.buttons:hover{
+    background-color: gray;
+}
+.buttons:active{
+    font-size: 10px;
 }
