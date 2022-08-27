@@ -11,6 +11,7 @@ html, body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-spacing: 0;
 }
 .calcGrid{
     display: grid;
@@ -22,30 +23,29 @@ html, body{
     height: 750px;
     width: 550px;
     border: 15px solid #189AB4;
-    border-collapse: collapse;
+    border-spacing: 0;
     border-radius: 20px;
 }
 .top{
     border: thick solid #189AB4;
     grid-row: 1;
-    border-collapse: collapse;
+    border-spacing: 0;
 }
 .screen{
     border: thick solid #189AB4;
     grid-row: 2;
     padding: 0px 20px;
-    border-collapse: collapse;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
     word-wrap: break-word;
+    border-spacing: 0;
 }
 #screenText{
     display: flex;
     white-space: initial;
     word-wrap: break-word;
     font-size: 36px;
-    letter-spacing: 10px;
 }
 .buttonWrap{
     border: thick solid #189AB4;
@@ -53,11 +53,11 @@ html, body{
     display: grid;
     grid-template-columns: repeat(4,25%);
     grid-template-rows: repeat(6,16.67%);
-    border-collapse: collapse;
+    border-spacing: 0;
 }
 .buttons{
     border: thin solid #189AB4;
-    border-collapse: collapse;
+    border-spacing: 0;
     display: flex;
     justify-content: center;
     align-items: center;
