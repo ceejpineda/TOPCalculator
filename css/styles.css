@@ -27,9 +27,13 @@ html, body{
     border-radius: 20px;
 }
 .top{
+    display:flex;
+    padding: 0px 20px;
     border: thick solid #189AB4;
     grid-row: 1;
     border-spacing: 0;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 .screen{
     border: thick solid #189AB4;

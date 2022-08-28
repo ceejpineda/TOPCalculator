@@ -1,31 +1,38 @@
-let btn = document.querySelectorAll('div.buttons');
+let numeric = document.querySelectorAll('div.numeric');
+let operator = document.querySelectorAll('div.operator');
 let btnContent = document.querySelectorAll('div.buttons > span');
 let screen = document.getElementById('screenText');
+let topText = document.getElementById('topText');
 const numbers = [0,1,2,3,4,5,6,7,8,9];
 let digit1 = null;
 let digit2 = null;
-let operators = ["+","-","×","÷"];
-let operator = "";
-let result = 0;
+let operand = 0;
 
-btn.forEach(btns => {
-    btns.addEventListener('click', e => {
-        if((btns.innerText in numbers) && digit1 == null){
-            screen.innerText += btns.innerText + " ";
-            digit1 = parseInt(btns.innerText);
-        }else if((digit1 != null) && (btns.innerText in numbers)){
-            digit2 = parseInt(btns.innerText);
+numeric.forEach(numberics => {
+    numberics.addEventListener('click', e => {
+        if(screen.innerText == 0){
+            screen.innerText = "";
         }
-        if(operators.includes(btns.innerText)){
-            operator = btns.innerText;
-        }
-        
-        if(btns.innerText == '='){
-            result = doMath(digit1, digit2);
-            screen.innerText = screen.innerText + "=" + String(result);
-        }
+        screen.innerText += numberics.innerText;
     });
 });
+operator.forEach(operators => {
+    operators.addEventListener('click', e =>{
+        if(digit1 != null){
+            digit2 = screen.innerText;
+            operand = 1;
+        }else{
+            digit1 = screen.innerText;
+        }
+        if(operand == 1){
+            var result = doMath();
+            console.log(result)
+        }
+        topText.innerText = screen.innerText + " " + operators.innerText;
+        screen.innerText = 0;
+    });
+});
+
 
 function doMath(x, y){
     screen.innerText = digit1.toString() + operator + digit2.toString();
