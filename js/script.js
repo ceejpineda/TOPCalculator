@@ -44,21 +44,26 @@ class Calculator{
     }
 
     doMath(){
-        var sum;
+        var result;
         var digitOne = parseFloat(this.topScreen);
         var digitTwo = parseFloat(this.mainScreen);
         if(isNaN(digitTwo)||isNaN(digitTwo)){
             return;
         }
         if(this.operation === '+'){
-
+            result = digitOne + digitTwo;
         }else if(this.operation === '-'){
-
+            result = digitOne - digitTwo;
         }else if(this.operation === '*'){
-            
+            result = digitOne * digitTwo;
         }else if(this.operation === '/'){
-            
+            result = digitOne / digitTwo;
+        }else{
+            return;
         }
+        this.mainScreen = result;
+        this.operation = undefined;
+        this.topScreen = '';
     }
 
     screenRefresh(){
@@ -84,6 +89,11 @@ operators.forEach(operator =>{
 })
 
 equals.addEventListener('click', () =>{
-    calculator.compute();
+    calculator.doMath();
+    calculator.screenRefresh();
+})
+
+clear.addEventListener('click', () =>{
+    calculator.clear();
     calculator.screenRefresh();
 })
