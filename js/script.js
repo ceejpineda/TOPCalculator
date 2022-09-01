@@ -1,6 +1,6 @@
 //Query Selectors
 const numbers = document.querySelectorAll('[data-number]');
-const operators = document.querySelectorAll('[data-operators]');
+const operators = document.querySelectorAll('[data-operator]');
 const equals = document.querySelector('[data-equals]');
 const back = document.querySelector('[data-back]');
 const clear = document.querySelector('[data-clear]');
@@ -31,12 +31,39 @@ class Calculator{
         this.mainScreen = this.mainScreen.toString() + number.toString();
     }
 
-    operator(operation){
+    operatorToDo(operation){
+        if(this.mainScreen === ''){
+            return;
+        }
+        if(this.topScreen !== ''){
+            this.doMath();
+        }
+        this.operation = operation;
+        this.topScreen = this.mainScreen;
+        this.mainScreen = '';
+    }
 
+    doMath(){
+        var sum;
+        var digitOne = parseFloat(this.topScreen);
+        var digitTwo = parseFloat(this.mainScreen);
+        if(isNaN(digitTwo)||isNaN(digitTwo)){
+            return;
+        }
+        if(this.operation === '+'){
+
+        }else if(this.operation === '-'){
+
+        }else if(this.operation === '*'){
+            
+        }else if(this.operation === '/'){
+            
+        }
     }
 
     screenRefresh(){
-        this.mainScreenText.innerText = this.mainScreen
+        this.mainScreenText.innerText = this.mainScreen;
+        this.topScreenText.innerText = this.topScreen;
     }
 }
 
@@ -47,4 +74,16 @@ numbers.forEach(number => {
         calculator.numberToScreen(number.innerText);
         calculator.screenRefresh();
     })
+})
+
+operators.forEach(operator =>{
+    operator.addEventListener('click', ()=>{
+        calculator.operatorToDo(operator.innerText);
+        calculator.screenRefresh();
+    })
+})
+
+equals.addEventListener('click', () =>{
+    calculator.compute();
+    calculator.screenRefresh();
 })
