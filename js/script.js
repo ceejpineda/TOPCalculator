@@ -23,7 +23,7 @@ class Calculator{
     }
 
     back(){
-
+        this.mainScreen = this.mainScreen.toString().slice(0,-1);
     }
 
     numberToScreen(number){
@@ -68,7 +68,11 @@ class Calculator{
 
     screenRefresh(){
         this.mainScreenText.innerText = this.mainScreen;
-        this.topScreenText.innerText = this.topScreen;
+        if(this.operation != null){
+            this.topScreenText.innerText = `${this.topScreen} ${this.operation}`;
+        }else{
+            this.topScreenText.innerText = '';
+        }
     }
 }
 
@@ -95,5 +99,9 @@ equals.addEventListener('click', () =>{
 
 clear.addEventListener('click', () =>{
     calculator.clear();
+    calculator.screenRefresh();
+})
+back.addEventListener('click', () =>{
+    calculator.back();
     calculator.screenRefresh();
 })
